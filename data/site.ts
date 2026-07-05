@@ -27,6 +27,15 @@ export const siteConfig = {
     omurice: "/images/iga/omurice.jpg",
     souvenirs: "/images/iga/souvenirs.jpg",
     antiques: "/images/iga/antiques.jpg",
+    floorMap: "/images/iga/floor-map.jpg",
+    mapAntiques: "/images/iga/map-antiques.jpg",
+    mapMendon: "/images/iga/map-mendon.jpg",
+    mapNinja: "/images/iga/map-ninja.jpg",
+    mapOmurice: "/images/iga/map-omurice.jpg",
+    mapSouvenirs: "/images/iga/map-souvenirs.jpg",
+    mapTonkatsu: "/images/iga/map-tonkatsu.jpg",
+    ninjaEntrance: "/images/iga/ninja-entrance.png",
+    ninjaExperience: "/images/iga/ninja-experience.png",
     aiJourney: "/images/iga/ai-journey-collage.jpg",
     aiMood: "/images/iga/ai-layout-mood.jpg"
   }
@@ -36,6 +45,7 @@ export const navItems: NavItem[] = [
   { label: "トップ", href: "/" },
   { label: "お食事・大食堂", href: "/meals" },
   { label: "団体・旅行会社様へ", href: "/groups" },
+  { label: "体験コーナー", href: "/#experience" },
   { label: "お土産・柿の葉すし", href: "/souvenirs" },
   { label: "古美術コーナー", href: "/antiques" },
   { label: "アクセス", href: "/access" },

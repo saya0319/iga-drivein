@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { CallToActionBand } from "@/components/CallToActionBand";
 import { Hero } from "@/components/Hero";
 import { InfoCard } from "@/components/InfoCard";
@@ -31,6 +32,65 @@ const menuPhotos = [
     alt: "伊賀ドライブインの親子丼とうどん"
   }
 ];
+
+type MapPinStyle = CSSProperties & {
+  "--x": string;
+  "--y": string;
+  "--delay": string;
+};
+
+const mapPins = [
+  {
+    label: "古美術",
+    ariaLabel: "古美術の紹介を見る",
+    href: "#antiques",
+    src: siteConfig.images.mapAntiques,
+    style: { "--x": "17%", "--y": "26%", "--delay": "80ms" } as MapPinStyle
+  },
+  {
+    label: "忍者館",
+    ariaLabel: "忍者館の紹介を見る",
+    href: "#experience",
+    src: siteConfig.images.mapNinja,
+    style: { "--x": "28%", "--y": "17%", "--delay": "140ms" } as MapPinStyle
+  },
+  {
+    label: "お土産",
+    ariaLabel: "お土産売場の紹介を見る",
+    href: "#souvenirs",
+    src: siteConfig.images.mapSouvenirs,
+    style: { "--x": "39%", "--y": "29%", "--delay": "200ms" } as MapPinStyle
+  },
+  {
+    label: "麺丼コーナー",
+    ariaLabel: "麺丼コーナーの食事紹介を見る",
+    href: "#dining",
+    src: siteConfig.images.mapMendon,
+    style: { "--x": "49%", "--y": "17%", "--delay": "260ms" } as MapPinStyle
+  },
+  {
+    label: "ごはん屋",
+    ariaLabel: "ごはん屋の食事紹介を見る",
+    href: "#dining",
+    src: siteConfig.images.mapTonkatsu,
+    style: { "--x": "60%", "--y": "29%", "--delay": "320ms" } as MapPinStyle
+  },
+  {
+    label: "たまご亭",
+    ariaLabel: "たまご亭の食事紹介を見る",
+    href: "#dining",
+    src: siteConfig.images.mapOmurice,
+    style: { "--x": "70%", "--y": "17%", "--delay": "380ms" } as MapPinStyle
+  },
+  {
+    label: "団体旅行",
+    ariaLabel: "団体旅行の紹介を見る",
+    href: "#groups",
+    src: siteConfig.images.busArrival,
+    style: { "--x": "31%", "--y": "59%", "--delay": "440ms" } as MapPinStyle,
+    isBus: true
+  }
+] as const;
 
 export default function HomePage() {
   return (
@@ -88,6 +148,48 @@ export default function HomePage() {
             <Image src={siteConfig.images.antiques} alt="古美術コーナー" width={1800} height={1105} />
             <figcaption>出会う</figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section id="floor-map" className="section floor-map-section" aria-labelledby="floor-map-title">
+        <div className="floor-map__heading">
+          <p className="eyebrow">館内マップで楽しみを選ぶ</p>
+          <h2 id="floor-map-title">今日は、どこから楽しもう？</h2>
+          <p>食べる、遊ぶ、探す、持ち帰る。旅の途中に、楽しみがぎゅっと詰まっています。</p>
+        </div>
+
+        <p className="floor-map__hint">
+          <span aria-hidden="true">↔</span> 写真を選ぶと、詳しい紹介へ移動します
+        </p>
+        <div
+          className="floor-map__viewport"
+          tabIndex={0}
+          aria-label="館内マップ。スマートフォンでは横にスクロールできます"
+        >
+          <div className="floor-map__canvas">
+            <Image
+              className="floor-map__plan"
+              src={siteConfig.images.floorMap}
+              alt="伊賀ドライブイン1階館内図と駐車場の案内"
+              width={1600}
+              height={800}
+            />
+
+            {mapPins.map((pin) => (
+              <Link
+                key={pin.label}
+                className={`map-pin${"isBus" in pin && pin.isBus ? " map-pin--bus" : ""}`}
+                href={pin.href}
+                style={pin.style}
+                aria-label={pin.ariaLabel}
+              >
+                <span className="map-pin__photo">
+                  <Image src={pin.src} alt="" width={800} height={533} />
+                </span>
+                <span className="map-pin__label">{pin.label}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -222,6 +324,66 @@ export default function HomePage() {
             古美術コーナーは、他の休憩施設にはない伊賀ドライブインらしさ。
             食後の数分が、思いがけない発見の時間に変わります。
           </p>
+        </div>
+      </section>
+
+      <section id="experience" className="section ninja-experience-section">
+        <div className="ninja-experience__intro">
+          <div className="ninja-experience__copy">
+            <p className="eyebrow">からくり屋敷＆手裏剣投げ体験</p>
+            <h2>旅の途中で、忍者になる。</h2>
+            <p>
+              旅の思い出になる体験。伊賀ならではの忍者体験で、
+              大人も子どもも楽しめます。
+            </p>
+          </div>
+          <div className="ninja-price-card" aria-label="中学生以上の体験料金">
+            <p className="ninja-price-card__badge">中学生以上</p>
+            <dl>
+              <div>
+                <dt>からくり屋敷＋手裏剣体験</dt>
+                <dd>990円<small>（税込）</small></dd>
+              </div>
+              <div>
+                <dt>からくり屋敷のみ</dt>
+                <dd>550円<small>（税込）</small></dd>
+              </div>
+              <div>
+                <dt>手裏剣投げのみ</dt>
+                <dd>550円<small>（税込）</small></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div className="ninja-gallery" aria-label="忍者体験の様子">
+          <figure className="ninja-gallery__entrance">
+            <Image
+              src={siteConfig.images.ninjaEntrance}
+              alt="伊賀忍者館の入口へ向かう家族"
+              width={1536}
+              height={1024}
+            />
+            <figcaption>からくり屋敷・忍者館</figcaption>
+          </figure>
+          <figure className="ninja-gallery__shuriken">
+            <Image
+              src={siteConfig.images.ninjaExperience}
+              alt="親子で楽しむ手裏剣投げ体験"
+              width={1536}
+              height={1024}
+            />
+            <figcaption>手裏剣投げ</figcaption>
+          </figure>
+          <figure className="ninja-gallery__memory">
+            <Image
+              src={siteConfig.images.ninjaExperience}
+              alt="忍者や甲冑と一緒に楽しむ家族の忍者体験"
+              width={1536}
+              height={1024}
+            />
+            <figcaption>家族で忍者体験</figcaption>
+          </figure>
         </div>
       </section>
 
