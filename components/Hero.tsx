@@ -25,13 +25,13 @@ export function Hero() {
           旅の途中の立ち寄り拠点です。
         </p>
         <div className="hero__actions" aria-label="主要導線">
-          <Link className="button button--primary" href="/groups">
+          <Link className="button button--primary" href="#groups">
             団体旅行の相談をする
           </Link>
-          <Link className="button button--secondary" href="/meals">
+          <Link className="button button--secondary" href="#dining">
             食堂を見る
           </Link>
-          <Link className="button button--ghost" href="/antiques">
+          <Link className="button button--ghost" href="#antiques">
             古美術を見る
           </Link>
         </div>

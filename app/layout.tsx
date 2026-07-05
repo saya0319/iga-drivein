@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <ScrollReveal />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
