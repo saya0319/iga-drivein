@@ -273,6 +273,8 @@ export default function HomePage() {
             名阪国道 伊賀ICすぐ。昼食、休憩、お土産購入、古美術コーナー散策まで、
             限られた立ち寄り時間を無理なく楽しめます。
           </p>
+        </div>
+        <div className="group-section__details">
           <div className="card-grid card-grid--two">
             {groupReasons.map((feature) => (
               <InfoCard key={feature.title} {...feature} />
@@ -292,6 +294,8 @@ export default function HomePage() {
             掛け軸、茶碗、鉄瓶、壺、刀など、市場価格よりお求めやすい品との出会いも。
             伊賀ドライブイン最大の個性として、食事休憩に「宝探し」の楽しさを添えます。
           </p>
+        </div>
+        <div className="antique-section__details">
           <div className="mini-card-grid">
             {antiqueHighlights.map((feature) => (
               <InfoCard key={feature.title} {...feature} />
