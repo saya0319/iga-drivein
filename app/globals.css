@@ -2370,3 +2370,328 @@ html.reveal-ready [data-reveal].is-visible {
     line-height: 1.85;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Resilient layout guardrails
+   Keep text readable when grid and flex items are measured at narrow widths.
+   -------------------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+.site-header__inner,
+.site-footer__inner,
+.section,
+.proof-band,
+.cta-band,
+.hero__overlay,
+.souvenir-section {
+  width: min(100% - 40px, 1240px);
+  margin-inline: auto;
+}
+
+/* Full-bleed sections own their inner gutter; do not constrain them twice. */
+.experience-strip,
+.floor-map-section,
+.dining-section,
+.group-section,
+.treasure-section,
+.ninja-experience-section {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.story-section,
+.group-section,
+.antique-section,
+.souvenir-section,
+.access-section,
+.hospitality-section,
+.experience-strip__copy,
+.experience-strip__grid,
+.menu-photo-grid,
+.ninja-experience__intro,
+.ninja-gallery,
+.card-grid,
+.mini-card-grid,
+.site-footer__inner {
+  min-width: 0;
+}
+
+.story-section > *,
+.group-section > *,
+.antique-section > *,
+.souvenir-section > *,
+.access-section > *,
+.hospitality-section > *,
+.experience-strip__copy > *,
+.experience-strip__grid > *,
+.menu-photo-grid > *,
+.ninja-experience__intro > *,
+.ninja-gallery > *,
+.card-grid > *,
+.mini-card-grid > *,
+.site-footer__inner > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.story-section,
+.group-section {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.hospitality-section {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+}
+
+.antique-section {
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+}
+
+.souvenir-section {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+}
+
+.access-section {
+  grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+}
+
+.experience-strip__copy {
+  grid-template-columns: minmax(0, 0.54fr) minmax(0, 1.46fr);
+}
+
+.ninja-experience__intro {
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+}
+
+.story-section__copy,
+.group-section__copy,
+.antique-section__copy,
+.souvenir-section__copy,
+.hospitality-section__copy,
+.ninja-experience__copy,
+.access-section > div,
+.experience-strip__copy > div {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.group-section,
+.antique-section {
+  grid-template-rows: auto auto;
+  row-gap: 28px;
+}
+
+.group-section__image {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.group-section__copy,
+.group-section__details {
+  grid-column: 2;
+}
+
+.group-section__copy {
+  grid-row: 1;
+  align-self: end;
+}
+
+.group-section__details {
+  grid-row: 2;
+  align-self: start;
+}
+
+.group-section__details .button {
+  margin-top: 22px;
+}
+
+.antique-section__copy,
+.antique-section__details {
+  grid-column: 1;
+}
+
+.antique-section__copy {
+  grid-row: 1;
+  align-self: end;
+}
+
+.antique-section__details {
+  grid-row: 2;
+  align-self: start;
+}
+
+.antique-section__image {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+@media (max-width: 1280px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    padding-block: 12px;
+  }
+
+  .site-nav {
+    order: 3;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header__inner,
+  .site-footer__inner,
+  .section,
+  .proof-band,
+  .cta-band,
+  .hero__overlay,
+  .souvenir-section {
+    width: min(100% - 24px, 1240px);
+  }
+
+  .story-section,
+  .group-section,
+  .antique-section,
+  .souvenir-section,
+  .access-section,
+  .hospitality-section,
+  .experience-strip__copy,
+  .experience-strip__grid,
+  .menu-photo-grid,
+  .ninja-experience__intro,
+  .ninja-gallery,
+  .card-grid--four,
+  .card-grid--two,
+  .mini-card-grid,
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ninja-gallery {
+    grid-template-rows: none;
+  }
+
+  .ninja-gallery__entrance {
+    grid-row: auto;
+  }
+
+  .story-section__copy,
+  .hospitality-section__copy,
+  .group-section__copy,
+  .antique-section__copy,
+  .ninja-experience__copy,
+  .souvenir-section__copy,
+  .access-section > div:first-child,
+  .experience-strip__copy {
+    order: 1;
+  }
+
+  .story-section__photo,
+  .hospitality-section__image,
+  .group-section__image,
+  .antique-section__image,
+  .souvenir-section__image,
+  .access-photo,
+  .experience-strip__grid,
+  .ninja-gallery {
+    order: 2;
+  }
+
+  .group-section__details,
+  .antique-section__details,
+  .ninja-price-card {
+    order: 3;
+  }
+
+  .group-section__image,
+  .group-section__copy,
+  .group-section__details,
+  .antique-section__copy,
+  .antique-section__details,
+  .antique-section__image {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .group-section,
+  .antique-section {
+    row-gap: 32px;
+  }
+
+  .ninja-experience-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 32px;
+  }
+
+  .ninja-experience__intro {
+    display: contents;
+  }
+
+  .story-section__copy,
+  .hospitality-section__copy,
+  .group-section__copy,
+  .antique-section__copy,
+  .ninja-experience__copy,
+  .souvenir-section__copy,
+  .access-section > div:first-child,
+  .experience-strip__copy,
+  .section-heading {
+    width: 100%;
+    min-width: min(80vw, 100%);
+    max-width: 100%;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+  }
+
+  .story-section__copy :is(h2, h3, p),
+  .hospitality-section__copy :is(h2, h3, p),
+  .group-section__copy :is(h2, h3, p),
+  .antique-section__copy :is(h2, h3, p),
+  .ninja-experience__copy :is(h2, h3, p),
+  .souvenir-section__copy :is(h2, h3, p),
+  .access-section > div:first-child :is(h2, h3, p),
+  .section-heading :is(h2, h3, p) {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+  }
+
+  .group-section__details,
+  .antique-section__details,
+  .ninja-price-card,
+  .card-grid,
+  .mini-card-grid {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .story-section__copy,
+  .group-section__copy,
+  .antique-section__copy,
+  .souvenir-section__copy,
+  .hospitality-section__copy,
+  .ninja-experience__copy,
+  .access-section > div,
+  .experience-strip__copy > div,
+  .section-heading {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ninja-price-card dl > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
