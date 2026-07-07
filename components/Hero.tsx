@@ -8,9 +8,9 @@ export function Hero() {
       <div className="hero__media" aria-label="伊賀ドライブイン外観">
         <Image
           src={siteConfig.images.hero}
-          alt="青空の下に建つ伊賀ドライブインの外観"
-          width={2200}
-          height={1467}
+          alt="青空と観光バスが並ぶ明るい伊賀ドライブインの外観"
+          width={1536}
+          height={1024}
           priority
         />
       </div>
