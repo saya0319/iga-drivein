@@ -17,7 +17,7 @@ export const siteConfig = {
   description:
     "伊賀ドライブインは、名阪国道 伊賀ICすぐの大型食堂・休憩拠点です。観光バス、団体旅行、食事、お土産、古美術コーナーまで一度に楽しめます。",
   images: {
-    hero: "/images/iga/hero-gaikan.jpg",
+    hero: "/images/iga/hero-bright-buses.png",
     busArrival: "/images/iga/bus-arrival.jpg",
     busParking: "/images/iga/bus-parking.jpg",
     parkingView: "/images/iga/parking-view.jpg",
