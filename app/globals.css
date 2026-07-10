@@ -2700,6 +2700,10 @@ body {
 .story-section__photo {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: auto;
+  height: auto;
   background: var(--paper-strong);
   box-shadow: 0 20px 60px rgba(33, 22, 15, 0.12);
 }
@@ -2712,12 +2716,13 @@ body {
   min-height: 0;
   max-width: none;
   object-fit: cover;
-  object-position: center;
+  object-position: center 52%;
   filter: brightness(1.03) saturate(1.04) contrast(1.01);
 }
 
 @media (max-width: 768px) {
-  .story-section__photo img {
-    object-position: 62% center;
+  .story-section__photo {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
   }
 }
