@@ -133,7 +133,17 @@ export default function HomePage() {
         </div>
         <div className="experience-strip__grid">
           <figure>
-            <Image src={siteConfig.images.teishoku} alt="食堂メニュー" width={1800} height={1105} />
+            <video
+              aria-label="食堂メニュー"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={siteConfig.images.teishoku}
+              preload="metadata"
+            >
+              <source src="/images/iga/iga-hp-top-left.mp4" type="video/mp4" />
+            </video>
             <figcaption>食べる</figcaption>
           </figure>
           <figure>
